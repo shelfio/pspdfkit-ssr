@@ -1,0 +1,72 @@
+{
+  "name": "@shelf/pspdfkit-ssr",
+  "version": "1.0.2",
+  "description": "Utilities to work with PSPDFKit's server-side rendering",
+  "license": "MIT",
+  "repository": "shelfio/pspdfkit-ssr",
+  "author": {
+    "name": "Vlad Holubiev",
+    "email": "vlad@shelf.io",
+    "url": "shelf.io"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "scripts": {
+    "build": "rm -rf lib/ && yarn build:types && babel src --out-dir lib --ignore '**/*.test.ts' --extensions '.ts'",
+    "build:types": "tsc --emitDeclarationOnly --declaration --isolatedModules false --allowJs false --declarationDir lib",
+    "coverage": "jest --coverage",
+    "lint": "eslint . --fix",
+    "prepack": "yarn build",
+    "test": "jest src",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch"
+  },
+  "main": "lib",
+  "files": [
+    "lib"
+  ],
+  "types": "lib/index.d.ts",
+  "keywords": [
+    "pspdfkit",
+    "ssr"
+  ],
+  "devDependencies": {
+    "@babel/cli": "7.4.4",
+    "@babel/core": "7.4.5",
+    "@babel/preset-env": "7.4.5",
+    "@babel/preset-typescript": "7.3.3",
+    "@shelf/eslint-config": "0.3.5",
+    "@types/jest": "24.0.13",
+    "@types/node": "8",
+    "aws-sdk": "2.290.0",
+    "babel-jest": "24.8.0",
+    "eslint": "5.16.0",
+    "husky": "2.3.0",
+    "jest": "24.8.0",
+    "lint-staged": "8.1.7",
+    "prettier": "1.17.1",
+    "typescript": "3.4.5"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{html,json,md,yml}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
