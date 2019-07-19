@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 
-export async function uploadPDF(fileBuffer: Buffer): Promise<string> {
+export async function uploadPDF(documentId: string, fileBuffer: Buffer): Promise<string> {
   const PSPDFServerURL = process.env.PSPDFKIT_SERVER_URL;
   const PSPDFAuthToken = process.env.PSPDFKIT_SERVER_AUTH_TOKEN;
   const uploadPDFURL = `${PSPDFServerURL}/api/documents`;

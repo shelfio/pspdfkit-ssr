@@ -15,7 +15,7 @@ beforeAll(() => {
 });
 
 it('should call fetch w/ proper params', async () => {
-  await uploadPDF(Buffer.from('hello'));
+  await uploadPDF('some-doc-id', Buffer.from('hello'));
 
   expect(fetch).toBeCalledWith('https://pdf.google.com/api/documents', {
     body: Buffer.from('hello'),
@@ -25,6 +25,6 @@ it('should call fetch w/ proper params', async () => {
 });
 
 it('should return uploaded document id', async () => {
-  const documentId = await uploadPDF(Buffer.from('hello'));
+  const documentId = await uploadPDF('some-doc-id', Buffer.from('hello'));
   expect(documentId).toEqual('some-doc-id');
 });
