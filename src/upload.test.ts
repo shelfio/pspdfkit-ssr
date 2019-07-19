@@ -1,5 +1,6 @@
 jest.mock('node-fetch');
 
+import {createReadStream} from 'fs';
 import fetch from 'node-fetch';
 import {uploadPDF} from './upload';
 
@@ -15,16 +16,19 @@ beforeAll(() => {
 });
 
 it('should call fetch w/ proper params', async () => {
-  await uploadPDF('some-doc-id', Buffer.from('hello'));
+  await uploadPDF('some-doc-id', createReadStream('./test.pdf'));
 
   expect(fetch).toBeCalledWith('https://pdf.google.com/api/documents', {
-    body: expect.anything(),
-    headers: {Authorization: 'Token token=some token', 'Content-Type': 'application/pdf'},
-    method: 'POST'
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=some token',
+      'content-type': expect.stringContaining(`multipart/form-data; boundary=`)
+    },
+    body: expect.anything()
   });
 });
 
 it('should return uploaded document id', async () => {
-  const documentId = await uploadPDF('some-doc-id', Buffer.from('hello'));
+  const documentId = await uploadPDF('some-doc-id', createReadStream('./test.pdf'));
   expect(documentId).toEqual('some-doc-id');
 });
