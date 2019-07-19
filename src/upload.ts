@@ -1,9 +1,9 @@
 import fetch from 'node-fetch';
 import FormData from 'form-data';
-import {ReadStream} from 'fs';
+import {Readable} from 'stream';
 import {UploadDocumentResponse} from './types';
 
-export async function uploadPDF(documentId: string, fileStream: ReadStream): Promise<string> {
+export async function uploadPDF(documentId: string, fileStream: Readable): Promise<string> {
   const PSPDFServerURL = process.env.PSPDFKIT_SERVER_URL;
   const PSPDFAuthToken = process.env.PSPDFKIT_SERVER_AUTH_TOKEN;
   const uploadPDFURL = `${PSPDFServerURL}/api/documents`;
