@@ -18,7 +18,7 @@ it('should call fetch w/ proper params', async () => {
   await uploadPDF('some-doc-id', Buffer.from('hello'));
 
   expect(fetch).toBeCalledWith('https://pdf.google.com/api/documents', {
-    body: Buffer.from('hello'),
+    body: expect.anything(),
     headers: {Authorization: 'Token token=some token', 'Content-Type': 'application/pdf'},
     method: 'POST'
   });
