@@ -21,6 +21,14 @@ export async function uploadPDF(documentId: string, fileStream: ReadStream): Pro
     }
   });
 
+  if (response.status === 400) {
+    const errorMessage = await response.text();
+
+    if (errorMessage.includes(`A document with the given document_id already exists`)) {
+      return documentId;
+    }
+  }
+
   const {
     data: {document_id}
   }: UploadDocumentResponse = await response.json();

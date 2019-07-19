@@ -26,6 +26,9 @@ const jwt = getJWTForDocumentPreview(documentId);
 - `PSPDFKIT_SERVER_JWT_KEY`
 - `PSPDFKIT_SERVER_JWT_PASSPHRASE`
 
+**Note:** this library tries to be idempotent.
+Unlike PSPDFKit server, it catches errors when document with provided ID was already uploaded.
+
 See [Client Authentication](https://pspdfkit.com/guides/server/current/pspdfkit-server/client-authentication/)
 section of PSPDFKit documentation for details.
 

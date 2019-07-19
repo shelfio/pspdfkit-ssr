@@ -32,3 +32,16 @@ it('should return uploaded document id', async () => {
   const documentId = await uploadPDF('some-doc-id', createReadStream('./test.pdf'));
   expect(documentId).toEqual('some-doc-id');
 });
+
+it('should return provided doc id when doc already exists', async () => {
+  ((fetch as unknown) as jest.Mock).mockResolvedValueOnce({
+    status: 400,
+    async text() {
+      return 'A document with the given document_id already exists.';
+    }
+  });
+
+  const documentId = await uploadPDF('some-another-doc-id', createReadStream('./test.pdf'));
+
+  expect(documentId).toEqual('some-another-doc-id');
+});
