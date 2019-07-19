@@ -11,9 +11,10 @@ $ yarn add @shelf/pspdfkit-ssr
 ## Usage
 
 ```js
+const {createReadStream} = require('fs');
 const {uploadPDF, getJWTForDocumentPreview} = require('@shelf/pspdfkit-ssr');
 
-const documentId = await uploadPDF(Buffer.from('hello'));
+const documentId = await uploadPDF('some-custom-document-id', createReadStream('./file.pdf'));
 
 const jwt = getJWTForDocumentPreview(documentId);
 ```
