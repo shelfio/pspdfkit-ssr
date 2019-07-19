@@ -1,4 +1,5 @@
 import fetch from 'node-fetch';
+import {UploadDocumentResponse} from './types';
 
 export async function uploadPDF(documentId: string, fileBuffer: Buffer): Promise<string> {
   const PSPDFServerURL = process.env.PSPDFKIT_SERVER_URL;
@@ -13,7 +14,7 @@ export async function uploadPDF(documentId: string, fileBuffer: Buffer): Promise
 
   const {
     data: {document_id}
-  } = await response.json();
+  }: UploadDocumentResponse = await response.json();
 
   return document_id;
 }
