@@ -3,13 +3,26 @@ import FormData from 'form-data';
 import {Readable} from 'stream';
 import {UploadDocumentResponse} from './types';
 
-export async function uploadPDF(documentId: string, fileStream: Readable): Promise<string> {
+interface UploadPDFParams {
+  documentId: string;
+  fileStream: Readable;
+  // Required when using stream from aws-sdk
+  fileSize?: number;
+}
+
+export async function uploadPDF(params: UploadPDFParams): Promise<string> {
+  const {documentId, fileStream, fileSize} = params;
   const PSPDFServerURL = process.env.PSPDFKIT_SERVER_URL;
   const PSPDFAuthToken = process.env.PSPDFKIT_SERVER_AUTH_TOKEN;
   const uploadPDFURL = `${PSPDFServerURL}/api/documents`;
 
   const form = new FormData();
-  form.append('file', fileStream);
+
+  form.append('file', fileStream, {
+    contentType: 'application/pdf',
+    filename: 'file.pdf',
+    knownLength: fileSize
+  });
   form.append('document_id', documentId);
 
   const response = await fetch(uploadPDFURL, {

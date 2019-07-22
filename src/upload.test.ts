@@ -15,8 +15,10 @@ beforeAll(() => {
   }
 });
 
+const params = {documentId: 'some-doc-id', fileStream: createReadStream('./test.pdf')};
+
 it('should call fetch w/ proper params', async () => {
-  await uploadPDF('some-doc-id', createReadStream('./test.pdf'));
+  await uploadPDF(params);
 
   expect(fetch).toBeCalledWith('https://pdf.google.com/api/documents', {
     method: 'POST',
@@ -29,7 +31,7 @@ it('should call fetch w/ proper params', async () => {
 });
 
 it('should return uploaded document id', async () => {
-  const documentId = await uploadPDF('some-doc-id', createReadStream('./test.pdf'));
+  const documentId = await uploadPDF(params);
   expect(documentId).toEqual('some-doc-id');
 });
 
@@ -41,7 +43,10 @@ it('should return provided doc id when doc already exists', async () => {
     }
   });
 
-  const documentId = await uploadPDF('some-another-doc-id', createReadStream('./test.pdf'));
+  const documentId = await uploadPDF({
+    documentId: 'some-another-doc-id',
+    fileStream: createReadStream('./test.pdf')
+  });
 
   expect(documentId).toEqual('some-another-doc-id');
 });
