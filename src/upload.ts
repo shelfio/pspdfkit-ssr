@@ -27,6 +27,8 @@ export async function uploadPDF(documentId: string, fileStream: Readable): Promi
     if (errorMessage.includes(`A document with the given document_id already exists`)) {
       return documentId;
     }
+
+    throw new Error(errorMessage);
   }
 
   const {
