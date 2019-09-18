@@ -43,7 +43,7 @@
     "@babel/preset-typescript": "7.6.0",
     "@shelf/eslint-config": "0.7.0",
     "@types/jest": "24.0.18",
-    "@types/jsonwebtoken": "8.3.3",
+    "@types/jsonwebtoken": "8.3.4",
     "@types/node": "8",
     "@types/node-fetch": "2.5.0",
     "babel-jest": "24.9.0",
