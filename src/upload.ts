@@ -43,10 +43,14 @@ export async function uploadPDF(params: UploadPDFParams): Promise<string> {
 
     throw new Error(errorMessage);
   }
+  try {
+    const {
+      data: {document_id}
+    }: UploadDocumentResponse = await response.json();
 
-  const {
-    data: {document_id}
-  }: UploadDocumentResponse = await response.json();
-
-  return document_id;
+    return document_id;
+  } catch (e) {
+    const errorMessage = await response.text();
+    throw new Error(`response status:\n ${response.status}, message:\n ${errorMessage}`);
+  }
 }
