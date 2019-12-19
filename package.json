@@ -37,10 +37,10 @@
     "node-fetch": "2.6.0"
   },
   "devDependencies": {
-    "@babel/cli": "7.7.5",
-    "@babel/core": "7.7.5",
-    "@babel/preset-env": "7.7.6",
-    "@babel/preset-typescript": "7.7.4",
+    "@babel/cli": "7.7.7",
+    "@babel/core": "7.7.7",
+    "@babel/preset-env": "7.7.7",
+    "@babel/preset-typescript": "7.7.7",
     "@shelf/eslint-config": "0.12.1",
     "@types/jest": "24.0.24",
     "@types/jsonwebtoken": "8.3.5",
