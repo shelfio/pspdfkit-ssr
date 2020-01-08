@@ -10,7 +10,7 @@
     "url": "shelf.io"
   },
   "engines": {
-    "node": ">=8"
+    "node": ">=12"
   },
   "scripts": {
     "build": "rm -rf lib/ && yarn build:types && babel src --out-dir lib --ignore '**/*.test.ts' --extensions '.ts' && find ./lib -name '*.test.d.ts' -delete",
@@ -44,7 +44,7 @@
     "@shelf/eslint-config": "0.13.0",
     "@types/jest": "24.0.25",
     "@types/jsonwebtoken": "8.3.5",
-    "@types/node": "8",
+    "@types/node": "12",
     "@types/node-fetch": "2.5.4",
     "babel-jest": "24.9.0",
     "eslint": "6.8.0",
