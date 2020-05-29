@@ -32,7 +32,7 @@
     "ssr"
   ],
   "dependencies": {
-    "form-data": "2.5.1",
+    "form-data": "3.0.0",
     "jsonwebtoken": "8.5.1",
     "node-fetch": "2.6.0"
   },
