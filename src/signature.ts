@@ -10,7 +10,7 @@ export function getJWTForDocumentPreview(documentId: string): string {
   const secret = {key: PSPDFServerJWTKey, passphrase: PSPDFServerJWTPassphrase};
   const options = {
     algorithm: 'RS256',
-    expiresIn: '30 min'
+    expiresIn: '30 min',
   };
 
   return jwt.sign(data, secret, options);

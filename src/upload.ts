@@ -21,7 +21,7 @@ export async function uploadPDF(params: UploadPDFParams): Promise<string> {
   form.append('file', fileStream, {
     contentType: 'application/pdf',
     filename: 'file.pdf',
-    knownLength: fileSize
+    knownLength: fileSize,
   });
   form.append('document_id', documentId);
 
@@ -30,8 +30,8 @@ export async function uploadPDF(params: UploadPDFParams): Promise<string> {
     body: form,
     headers: {
       Authorization: `Token token=${PSPDFAuthToken}`,
-      ...form.getHeaders()
-    }
+      ...form.getHeaders(),
+    },
   });
 
   if (response.status === 400) {
@@ -45,7 +45,7 @@ export async function uploadPDF(params: UploadPDFParams): Promise<string> {
   }
   try {
     const {
-      data: {document_id}
+      data: {document_id},
     }: UploadDocumentResponse = await response.json();
 
     return document_id;
