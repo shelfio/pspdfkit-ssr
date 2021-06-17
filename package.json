@@ -10,7 +10,7 @@
     "url": "shelf.io"
   },
   "engines": {
-    "node": ">=12"
+    "node": ">=14"
   },
   "scripts": {
     "build": "rm -rf lib/ && yarn build:types && babel src --out-dir lib --ignore '**/*.test.ts' --extensions '.ts' && find ./lib -name '*.test.d.ts' -delete",
@@ -39,14 +39,14 @@
   "devDependencies": {
     "@babel/cli": "7.8.4",
     "@babel/core": "7.8.4",
-    "@babel/preset-env": "7.8.4",
-    "@babel/preset-typescript": "7.8.3",
-    "@shelf/eslint-config": "0.16.0",
+    "@shelf/babel-config": "0.1.4",
+    "@shelf/eslint-config": "1.2.0",
+    "@shelf/prettier-config": "1.0.0",
+    "@shelf/tsconfig": "0.0.6",
     "@types/jest": "26.0.9",
     "@types/jsonwebtoken": "8.3.7",
     "@types/node": "12",
     "@types/node-fetch": "2.5.4",
-    "babel-jest": "26.2.2",
     "eslint": "7.1.0",
     "husky": "4.2.3",
     "jest": "26.2.2",
@@ -74,5 +74,9 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "prettier": "@shelf/prettier-config",
+  "babel": {
+    "extends": "@shelf/babel-config/backend"
   }
 }
