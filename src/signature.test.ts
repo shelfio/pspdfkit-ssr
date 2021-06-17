@@ -21,6 +21,6 @@ it('should return correct jwt signature', () => {
     document_id: 'some-doc-id',
     permissions: ['read-document', 'download'],
     exp: expect.any(Number),
-    iat: expect.any(Number)
+    iat: expect.any(Number),
   });
 });

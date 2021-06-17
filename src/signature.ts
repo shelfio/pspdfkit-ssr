@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+import {Secret, SignOptions, sign} from 'jsonwebtoken';
 
 export function getJWTForDocumentPreview(documentId: string): string {
   const PSPDFServerJWTKey = process.env.PSPDFKIT_SERVER_JWT_KEY.replace(/\\n/g, '\n');
@@ -7,11 +7,11 @@ export function getJWTForDocumentPreview(documentId: string): string {
   const permissions = ['read-document', 'download'];
 
   const data = {document_id: documentId, permissions};
-  const secret = {key: PSPDFServerJWTKey, passphrase: PSPDFServerJWTPassphrase};
-  const options = {
+  const secret: Secret = {key: PSPDFServerJWTKey, passphrase: PSPDFServerJWTPassphrase};
+  const options: SignOptions = {
     algorithm: 'RS256',
-    expiresIn: '30 min'
+    expiresIn: '30 min',
   };
 
-  return jwt.sign(data, secret, options);
+  return sign(data, secret, options);
 }
