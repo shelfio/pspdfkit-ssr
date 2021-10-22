@@ -3,12 +3,12 @@ import FormData from 'form-data';
 import {Readable} from 'stream';
 import {UploadDocumentResponse} from './types';
 
-interface UploadPDFParams {
+type UploadPDFParams = {
   documentId: string;
   fileStream: Readable;
   // Required when using stream from aws-sdk
   fileSize?: number;
-}
+};
 
 export async function uploadPDF(params: UploadPDFParams): Promise<string> {
   const {documentId, fileStream, fileSize} = params;
