@@ -1,4 +1,4 @@
-export interface UploadDocumentResponse {
+export type UploadDocumentResponse = {
   data: {
     createdAt: string;
     document_id: string;
@@ -7,4 +7,4 @@ export interface UploadDocumentResponse {
     sourcePdfSha256: string;
     title: string;
   };
-}
+};
