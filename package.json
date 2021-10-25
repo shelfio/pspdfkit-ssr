@@ -1,6 +1,6 @@
 {
   "name": "@shelf/pspdfkit-ssr",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "Utilities to work with PSPDFKit's server-side rendering",
   "license": "MIT",
   "repository": "shelfio/pspdfkit-ssr",
