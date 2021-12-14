@@ -43,6 +43,9 @@ export async function uploadPDF(params: UploadPDFParams): Promise<string> {
 
     throw new Error(errorMessage);
   }
+
+  const responseClone = response.clone();
+
   try {
     const {
       data: {document_id},
@@ -50,7 +53,7 @@ export async function uploadPDF(params: UploadPDFParams): Promise<string> {
 
     return document_id;
   } catch (e) {
-    const errorMessage = await response.text();
+    const errorMessage = await responseClone.text();
     throw new Error(`response status:\n ${response.status}, message:\n ${errorMessage}`);
   }
 }

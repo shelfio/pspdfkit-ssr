@@ -13,6 +13,11 @@ beforeAll(() => {
   async json() {
     return {data: {document_id: 'some-doc-id'}};
   },
+  clone: () => ({
+    async json() {
+      return {data: {document_id: 'some-doc-id'}};
+    },
+  }),
 });
 
 const params = {documentId: 'some-doc-id', fileStream: createReadStream('./test.pdf')};
