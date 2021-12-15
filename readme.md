@@ -15,7 +15,7 @@ const {uploadPDF, getJWTForDocumentPreview} = require('@shelf/pspdfkit-ssr');
 const documentId = await uploadPDF({
   documentId: 'some-custom-document-id',
   fileStream: createReadStream('./file.pdf'),
-  fileSize: 1024
+  fileSize: 1024,
 });
 
 const jwt = getJWTForDocumentPreview(documentId);
@@ -33,6 +33,12 @@ Unlike PSPDFKit server, it catches errors when document with provided ID was alr
 
 See [Client Authentication](https://pspdfkit.com/guides/server/current/pspdfkit-server/client-authentication/)
 section of PSPDFKit documentation for details.
+
+## Publish
+
+- Run `sudo npx np`, follow interactive UI. Please select appropriate version bump according to [semver](https://semver.org/).
+
+- After redirect to the prepared release of the early published package just press button `Publish release`
 
 ## License
 
