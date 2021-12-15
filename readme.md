@@ -36,7 +36,9 @@ section of PSPDFKit documentation for details.
 
 ## Publish
 
-Run `sudo npx np --release-draft-only`, follow interactive UI. Please select appropriate version bump according to [semver](https://semver.org/).
+- Run `sudo npx np`, follow interactive UI. Please select appropriate version bump according to [semver](https://semver.org/).
+
+- After redirect to the prepared release of the early published package just press button `Publish release`
 
 ## License
 
