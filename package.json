@@ -2,16 +2,22 @@
   "name": "@shelf/pspdfkit-ssr",
   "version": "2.1.5",
   "description": "Utilities to work with PSPDFKit's server-side rendering",
-  "license": "MIT",
+  "keywords": [
+    "pspdfkit",
+    "ssr"
+  ],
   "repository": "shelfio/pspdfkit-ssr",
+  "license": "MIT",
   "author": {
     "name": "Vlad Holubiev",
     "email": "vlad@shelf.io",
     "url": "shelf.io"
   },
-  "engines": {
-    "node": ">=14"
-  },
+  "main": "lib",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "build": "rm -rf lib/ && yarn build:types && babel src --out-dir lib --ignore '**/*.test.ts' --extensions '.ts' && find ./lib -name '*.test.d.ts' -delete",
     "build:types": "tsc --emitDeclarationOnly --declaration --isolatedModules false --declarationDir lib",
@@ -22,15 +28,21 @@
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch"
   },
-  "main": "lib",
-  "files": [
-    "lib"
-  ],
-  "types": "lib/index.d.ts",
-  "keywords": [
-    "pspdfkit",
-    "ssr"
-  ],
+  "lint-staged": {
+    "*.{html,md,yml}": [
+      "prettier --write"
+    ],
+    "*.{js,ts,json}": [
+      "eslint --fix"
+    ]
+  },
+  "babel": {
+    "extends": "@shelf/babel-config/backend"
+  },
+  "prettier": "@shelf/prettier-config",
+  "jest": {
+    "testEnvironment": "node"
+  },
   "dependencies": {
     "form-data": "2.5.1",
     "jsonwebtoken": "8.5.1",
@@ -39,45 +51,26 @@
   },
   "devDependencies": {
     "@babel/cli": "7.17.6",
-    "@babel/core": "7.17.5",
+    "@babel/core": "7.17.8",
     "@shelf/babel-config": "0.1.8",
-    "@shelf/eslint-config": "2.4.1",
+    "@shelf/eslint-config": "2.16.0",
     "@shelf/prettier-config": "1.0.0",
     "@shelf/tsconfig": "0.0.6",
     "@types/jest": "27.4.1",
-    "@types/jsonwebtoken": "8.3.7",
+    "@types/jsonwebtoken": "8.5.8",
     "@types/node": "12",
     "@types/node-fetch": "2.6.1",
-    "eslint": "8.11.0",
-    "husky": "4.3.8",
+    "eslint": "8.12.0",
+    "husky": "7.0.4",
     "jest": "27.5.1",
     "lint-staged": "12.3.7",
-    "prettier": "2.5.1",
-    "typescript": "4.6.2"
+    "prettier": "2.6.2",
+    "typescript": "4.6.3"
   },
-  "jest": {
-    "testEnvironment": "node"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{ts,js}": [
-      "eslint --fix",
-      "git add"
-    ],
-    "*.{html,json,md,yml}": [
-      "prettier --write",
-      "git add"
-    ]
+  "engines": {
+    "node": ">=14"
   },
   "publishConfig": {
     "access": "public"
-  },
-  "prettier": "@shelf/prettier-config",
-  "babel": {
-    "extends": "@shelf/babel-config/backend"
   }
 }

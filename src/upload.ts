@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 import FormData from 'form-data';
-import {Readable} from 'stream';
-import {UploadDocumentResponse} from './types';
+import type {Readable} from 'stream';
+import type {UploadDocumentResponse} from './types';
 
 type UploadPDFParams = {
   documentId: string;
@@ -48,9 +48,11 @@ export async function uploadPDF(params: UploadPDFParams): Promise<string> {
 
   try {
     const {
+      // eslint-disable-next-line camelcase
       data: {document_id},
     }: UploadDocumentResponse = await response.json();
 
+    // eslint-disable-next-line camelcase
     return document_id;
   } catch (e) {
     const errorMessage = await responseClone.text();

@@ -9,15 +9,17 @@ beforeAll(() => {
   process.env.PSPDFKIT_SERVER_AUTH_TOKEN = 'some token';
 });
 
-((fetch as unknown) as jest.Mock).mockResolvedValue({
+(fetch as unknown as jest.Mock).mockResolvedValue({
   async json() {
     return {data: {document_id: 'some-doc-id'}};
   },
-  clone: () => ({
-    async json() {
-      return {data: {document_id: 'some-doc-id'}};
-    },
-  }),
+  clone: () => {
+    return {
+      async json() {
+        return {data: {document_id: 'some-doc-id'}};
+      },
+    };
+  },
 });
 
 const params = {documentId: 'some-doc-id', fileStream: createReadStream('./test.pdf')};
@@ -42,7 +44,7 @@ it('should return uploaded document id', async () => {
 });
 
 it('should return provided doc id when doc already exists', async () => {
-  ((fetch as unknown) as jest.Mock).mockResolvedValueOnce({
+  (fetch as unknown as jest.Mock).mockResolvedValueOnce({
     status: 400,
     async text() {
       return 'A document with the given document_id already exists.';
