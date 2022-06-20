@@ -58,7 +58,7 @@
     "@shelf/tsconfig": "0.0.6",
     "@types/jest": "28.1.2",
     "@types/jsonwebtoken": "8.5.8",
-    "@types/node": "12",
+    "@types/node": "12.20.55",
     "@types/node-fetch": "2.6.2",
     "eslint": "8.17.0",
     "husky": "8.0.1",
