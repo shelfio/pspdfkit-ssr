@@ -10,11 +10,13 @@ beforeAll(() => {
 });
 
 (fetch as unknown as jest.Mock).mockResolvedValue({
+  // eslint-disable-next-line require-await
   async json() {
     return {data: {document_id: 'some-doc-id'}};
   },
   clone: () => {
     return {
+      // eslint-disable-next-line require-await
       async json() {
         return {data: {document_id: 'some-doc-id'}};
       },
@@ -46,6 +48,7 @@ it('should return uploaded document id', async () => {
 it('should return provided doc id when doc already exists', async () => {
   (fetch as unknown as jest.Mock).mockResolvedValueOnce({
     status: 400,
+    // eslint-disable-next-line require-await
     async text() {
       return 'A document with the given document_id already exists.';
     },
