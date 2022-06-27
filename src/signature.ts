@@ -6,8 +6,10 @@ export function getJWTForDocumentPreview(
   documentId: string,
   expiresIn: StringValue = '30 min'
 ): string {
-  const PSPDFServerJWTKey = process.env.PSPDFKIT_SERVER_JWT_KEY.replace(/\\n/g, '\n');
-  const PSPDFServerJWTPassphrase = process.env.PSPDFKIT_SERVER_JWT_PASSPHRASE;
+  const PSPDFServerJWTKeyEnv = process.env.PSPDFKIT_SERVER_JWT_KEY as string;
+  const PSPDFServerJWTKey = PSPDFServerJWTKeyEnv.replace(/\\n/g, '\n');
+
+  const PSPDFServerJWTPassphrase = process.env.PSPDFKIT_SERVER_JWT_PASSPHRASE as string;
 
   const permissions = ['read-document', 'download'];
 
