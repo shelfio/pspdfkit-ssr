@@ -60,7 +60,7 @@
     "@types/jsonwebtoken": "8.5.8",
     "@types/node": "12",
     "@types/node-fetch": "2.6.2",
-    "eslint": "8.18.0",
+    "eslint": "8.19.0",
     "husky": "8.0.1",
     "jest": "28.1.1",
     "lint-staged": "13.0.3",
