@@ -50,8 +50,8 @@
     "node-fetch": "2.6.7"
   },
   "devDependencies": {
-    "@babel/cli": "7.18.10",
-    "@babel/core": "7.19.1",
+    "@babel/cli": "7.19.3",
+    "@babel/core": "7.19.3",
     "@shelf/babel-config": "1.2.0",
     "@shelf/eslint-config": "2.22.0",
     "@shelf/prettier-config": "1.0.0",
