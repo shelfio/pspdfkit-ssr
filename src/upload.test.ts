@@ -9,7 +9,7 @@ beforeAll(() => {
   process.env.PSPDFKIT_SERVER_AUTH_TOKEN = 'some token';
 });
 
-(fetch as unknown as jest.Mock).mockResolvedValue({
+jest.mocked(fetch as any).mockResolvedValue({
   // eslint-disable-next-line require-await
   async json() {
     return {data: {document_id: 'some-doc-id'}};
@@ -46,7 +46,7 @@ it('should return uploaded document id', async () => {
 });
 
 it('should return provided doc id when doc already exists', async () => {
-  (fetch as unknown as jest.Mock).mockResolvedValueOnce({
+  jest.mocked(fetch as any).mockResolvedValueOnce({
     status: 400,
     // eslint-disable-next-line require-await
     async text() {
