@@ -47,7 +47,7 @@
     "form-data": "4.0.0",
     "jsonwebtoken": "8.5.1",
     "ms": "3.0.0-canary.1",
-    "node-fetch": "2.6.7"
+    "node-fetch": "2.6.8"
   },
   "devDependencies": {
     "@babel/cli": "7.20.7",
