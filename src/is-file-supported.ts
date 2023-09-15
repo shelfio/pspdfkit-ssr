@@ -10,6 +10,7 @@ const SUPPORTED_FILES_EXTENSIONS_FOR_PSPDFKIT = [
   'pptx',
   'ppt',
   'pptm',
+  'pdf',
 ];
 
 export function isFileSupportedForOfficePreview(fileKey: string): boolean {
