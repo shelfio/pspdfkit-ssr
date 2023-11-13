@@ -1,5 +1,5 @@
-import type {Secret, SignOptions} from 'jsonwebtoken';
 import {sign} from 'jsonwebtoken';
+import type {Secret, SignOptions} from 'jsonwebtoken';
 import type {StringValue} from 'ms';
 
 export function getJWTForDocumentPreview(
