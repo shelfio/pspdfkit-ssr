@@ -44,7 +44,7 @@
     "testEnvironment": "node"
   },
   "dependencies": {
-    "form-data": "4.0.0",
+    "form-data": "4.0.2",
     "jsonwebtoken": "9.0.2",
     "ms": "3.0.0-canary.1",
     "node-fetch": "2.7.0"
