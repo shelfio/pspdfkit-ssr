@@ -3,14 +3,14 @@
 ## Install
 
 ```
-$ yarn add @shelf/pspdfkit-ssr
+$ npm install @shelf/pspdfkit-ssr
 ```
 
 ## Usage
 
 ```js
-const {createReadStream} = require('fs');
-const {uploadPDF, getJWTForDocumentPreview} = require('@shelf/pspdfkit-ssr');
+import {createReadStream} from 'fs';
+import {uploadPDF, getJWTForDocumentPreview} from '@shelf/pspdfkit-ssr';
 
 const documentId = await uploadPDF({
   documentId: 'some-custom-document-id',
