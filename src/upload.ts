@@ -54,7 +54,7 @@ export async function uploadPDF(params: UploadPDFParams): Promise<string> {
 
     // eslint-disable-next-line camelcase
     return document_id;
-  } catch (e) {
+  } catch {
     const errorMessage = await responseClone.text();
     throw new Error(`response status:\n ${response.status}, message:\n ${errorMessage}`);
   }
